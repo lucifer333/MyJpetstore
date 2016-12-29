@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.langtaojin.myjpetstore.domain.Category;
 import com.langtaojin.myjpetstore.domain.Item;
@@ -12,6 +13,7 @@ import com.langtaojin.myjpetstore.mapper.CategoryMapper;
 import com.langtaojin.myjpetstore.mapper.ItemMapper;
 import com.langtaojin.myjpetstore.mapper.ProductMapper;
 
+@Service
 public class CatalogService {
 
 	@Autowired
