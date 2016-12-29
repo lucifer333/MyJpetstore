@@ -7,13 +7,26 @@
  	<display-name>MyJpetstore</display-name>
 	<description>Online Pet Store Sample Application</description>
 	
+	<!--spring监听器,用来初始化spring容器,让spring容器随web应用的启动而自动启动,默认自动加载WEB-INF/下的applicationContext.xml -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+	<!-- 指定多个配置文件,如果没有这个配置,ContextLoaderListener会默认加载 WEB-INF/下的applicationContext.xml-->
+	<context-param>
+	    <!-- 名字一定要是contextConfigLocation,ContextLoaderListener会根据这个名字来加载配置文件 -->
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>	  
+	       classpath:applicationContext.xml
+	    </param-value>
+	</context-param>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>StripesResources</param-value>
 	</context-param>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
 	<filter>
 		<display-name>Stripes Filter</display-name>
 		<filter-name>StripesFilter</filter-name>
