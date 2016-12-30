@@ -14,11 +14,6 @@
   <properties>
     <spring.version>4.3.5.RELEASE</spring.version>
     <junit.version>4.12</junit.version>
-    <aspectj.version>1.8.7</aspectj.version>
-    <hibernate.version>4.3.6.Final</hibernate.version>
-    <ehcache.version>2.6.9</ehcache.version>
-    <javax.mail.version>1.4.1</javax.mail.version>
-    <quartz.version>2.2.2</quartz.version>
   </properties>
     
   <!--配置依赖的jar包-->
@@ -93,5 +88,24 @@
   
   <build>
     <finalName>MyJpetstore</finalName>
+    <plugins>
+    	<!--使用cargo实现自动化部署到tomcat-->
+    	<plugin>
+    		<groupId>org.codehaus.cargo</groupId>
+  			<artifactId>cargo-maven2-plugin</artifactId>
+            <version>1.6.1</version>
+            <configuration>
+            	<container>
+            	    <containerId>tomcat8x</containerId>
+            		<home>G:\apache-tomcat-8\apache-tomcat-8.0.28</home>
+            	</container>
+				<configuration>
+					<type>existing</type>
+					<home>G:\apache-tomcat-8\apache-tomcat-8.0.28</home>
+				</configuration>
+            </configuration>
+    	</plugin>
+    </plugins>
   </build>
+  
 </project>

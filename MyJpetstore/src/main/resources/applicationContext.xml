@@ -51,6 +51,6 @@
     </bean>
     
     <!-- scan for mappers and let them be autowired -->
-    <mybatis:scan base-package="org.mybatis.jpetstore.mapper" />
+    <mybatis:scan base-package="com.langtaojin.myjpetstore.mapper" />
     
 </beans>
