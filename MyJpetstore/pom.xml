@@ -97,11 +97,11 @@
             <configuration>
             	<container>
             	    <containerId>tomcat8x</containerId>
-            		<home>G:\apache-tomcat-8\apache-tomcat-8.0.28</home>
+            		<home>D:\apache-tomcat-8\apache-tomcat-8.0.28</home>
             	</container>
 				<configuration>
 					<type>existing</type>
-					<home>G:\apache-tomcat-8\apache-tomcat-8.0.28</home>
+					<home>D:\apache-tomcat-8\apache-tomcat-8.0.28</home>
 				</configuration>
             </configuration>
     	</plugin>
