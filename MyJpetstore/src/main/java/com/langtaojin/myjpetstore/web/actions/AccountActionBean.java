@@ -25,7 +25,7 @@ public class AccountActionBean extends AbstractActionBean{
 	private static final long serialVersionUID = 4828583119184498386L;
 
 	private static final String NEW_ACCOUNT="/WEB-INF/jsp/account/NewAccountForm.jsp";
-	private static final String EDIT_ACCOUNT="/WEB-INF/jsp/account/EditAccount.jsp";
+	private static final String EDIT_ACCOUNT="/WEB-INF/jsp/account/EditAccountForm.jsp";
 	private static final String SIGNON="/WEB-INF/jsp/account/SignonForm.jsp";
 	
 	private static final List<String> LANGUAGE_LIST;
@@ -85,11 +85,11 @@ public class AccountActionBean extends AbstractActionBean{
 		this.myList = myList;
 	}
 
-	public static List<String> getLanguageList() {
+	public List<String> getLanguages() {
 		return LANGUAGE_LIST;
 	}
 
-	public static List<String> getCategoryList() {
+	public List<String> getCategories() {
 		return CATEGORY_LIST;
 	}
 	

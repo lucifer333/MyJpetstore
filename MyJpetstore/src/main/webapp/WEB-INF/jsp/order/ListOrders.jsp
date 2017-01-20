@@ -1,28 +1,32 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ include file="../common/IncludeTop.jsp" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'MyJsp.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<h2>My Orders</h2>
+<table>
+    <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Total Price</th>
+    </tr>
+    <c:forEach var="order" items="${actionBean.orderList}">
+        <tr>
+            <td>
+                <stripes:link
+                    beanclass="com.langtaojin.myjpetstore.web.actions.OrderActionBean"
+                    event="viewOrder">
+                    <stripes:param name="orderId" value="${order.orderId}"/>
+                    ${order.orderId}
+                </stripes:link>
+            </td>
+            <td>
+                <fmt:formatDate value="${order.orderDate}"
+                    pattern="yyyy/MM/dd hh:mm:ss"/>
+            </td>
+            <td>
+                <fmt:formatNumber value="${order.totalPrice}"
+                    pattern="$#,##0.00"/>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
 
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
-</html>
+<%@ include file="../common/IncludeBottom.jsp" %>

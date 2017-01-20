@@ -1,12 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="../common/IncludeTop.jsp"%>
 
-</body>
-</html>
+<div id="Catalog">
+    <stripes:form
+        beanclass="com.langtaojin.myjpetstore.web.actions.AccountActionBean"
+        focus="">
+        <h3>User Information</h3>
+        
+        <table>
+            <tr>
+                <td>User ID:</td>
+                <td>${actionBean.username}</td>
+            </tr>
+            <tr>
+                <td>New password:</td>
+                <td><stripes:text name="password"/></td>
+            </tr>
+            <tr>
+                <td>Repeat password:</td>
+                <td><stripes:text name="repeatedPassword"/></td>
+            </tr>
+        </table>
+        
+        <%@ include file="IncludeAccountFields.jsp" %>
+        <stripes:submit name="editAccount" value="Save Account Information"/>
+    </stripes:form>  
+    
+    <stripes:link
+        beanclass="com.langtaojin.myjpetstore.web.actions.OrderActionBean"
+        event="listOrders">
+        My Orders
+    </stripes:link>  
+</div>    
+
+<%@ include file="../common/IncludeBottom.jsp"%>
+    

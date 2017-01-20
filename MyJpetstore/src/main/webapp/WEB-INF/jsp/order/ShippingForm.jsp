@@ -1,28 +1,48 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ include file="../common/IncludeTop.jsp" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'MyJsp.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<div id="Catalog">
+    <stripes:form
+        beanclass="com.langtaojin.myjpetstore.web.actions.OrderActionBean">
+        <table>
+            <tr>
+                <th colspan="2">Shipping Address</th>
+            </tr>
+            <tr>
+                <td>First name:</td>
+                <td><stripes:text name="order.shipToFirstName"/></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td><stripes:text name="order.shipToLastName"/></td>
+            </tr>
+            <tr>
+                <td>Address 1:</td>
+                <td><stripes:text size="40" name="order.shipAddress1"/></td>
+            </tr>
+            <tr>
+                <td>Address 2:</td>
+                <td><stripes:text size="40" name="order.shipAddress2"/></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><stripes:text name="order.shipCity"/></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><stripes:text size="4" name="order.shipState"/></td>
+            </tr>
+            <tr>
+                <td>Zip:</td>
+                <td><stripes:text size="10" name="order.shipZip"/></td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td><stripes:text size="15" name="order.shipCountry"/></td>
+            </tr>
+        </table>
+        
+        <stripes:submit name="newOrder" value="Continue"/>
+    </stripes:form>
+</div>
 
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
-</html>
+<%@ include file="../common/IncludeBottom.jsp" %>

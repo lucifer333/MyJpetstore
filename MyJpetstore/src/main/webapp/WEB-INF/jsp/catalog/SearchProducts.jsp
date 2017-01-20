@@ -1,12 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="../common/IncludeTop.jsp" %>
 
-</body>
-</html>
+<div id="BackLink">
+    <stripes:link
+        beanclass="com.langtaojin.myjpetstore.web.actions.CatalogActionBean">
+        Return to Main Menu
+    </stripes:link>
+</div>
+
+<div id="Catalog">
+    <table>
+        <tr>
+            <th>$nbsp;</th>
+            <th>Product ID</th>
+            <th>Name</th>
+        </tr>
+        <c:forEach var="product" items="${actionBean.productList}">
+            <tr>
+                <td>
+                    <stripes:link
+                        beanclass="com.langtaojin.myjpetstore.web.actions.CatalogActionBean"
+                        event="viewProduct">
+                        <stripes:param name="productId" value="${product.productId}"/>
+                        ${product.description}
+                    </stripes:link>
+                </td>
+                <td><b>
+                    <stripes:link
+                        beanclass="com.langtaojin.myjpetstore.web.actions.CatalogActionBean"
+                        event="viewProduct">
+                        <stripes:param name="productId" value="${product.productId}"/>
+                        <font colot="BLACK">${product.productId}</font>
+                    </stripes:link>
+                </b></td>
+                <td>${product.name}</td>
+            </tr>
+        </c:forEach>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+<%@ include file="../common/IncludeBottom.jsp" %>

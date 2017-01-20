@@ -37,13 +37,6 @@
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
     </dependency>
-    <!--有了这个jar包就不需要在项目中加入server runtime-->
-    <dependency>
-	  <groupId>javax.servlet</groupId>
-	  <artifactId>javax.servlet-api</artifactId>
-	  <version>3.1.0</version>
-	  <scope>provided</scope>
-	</dependency>
 	<!--spring依赖的jar包-->
 	<dependency>
       <groupId>org.springframework</groupId>
@@ -54,7 +47,7 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
       <version>${spring.version}</version>
-    </dependency>
+    </dependency>  
     <!--mybatis依赖的jar包-->
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -73,10 +66,10 @@
       <version>1.6.0</version>
     </dependency>
     <!--mysql驱动-->
-    <dependency>
+	<dependency>
 	  <groupId>mysql</groupId>
 	  <artifactId>mysql-connector-java</artifactId>
-	  <version>6.0.5</version>
+	  <version>5.1.40</version>
 	</dependency>
 	<!--c3p0数据源,提供连接池的作用-->
 	<dependency>
@@ -84,10 +77,43 @@
 	  <artifactId>c3p0</artifactId>
 	  <version>0.9.1.2</version>
 	</dependency>
+    <!--JSTL标签库需要的jar包-->
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-spec</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-impl</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+    <!--这样就不用在项目中加入apache tomcat runtime依赖-->
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.2.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   
   <build>
     <finalName>MyJpetstore</finalName>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
     	<!--使用cargo实现自动化部署到tomcat-->
     	<plugin>

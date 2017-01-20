@@ -1,12 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="../common/IncludeTop.jsp" %>
 
-</body>
-</html>
+<div id="BackLink">
+    <stripes:link
+        beanclass="com.langtaojin.myjpetstore.web.actions.CatalogActionBean"
+        event="viewCategory">
+        <stripes:param name="categoryId"
+            value="${actionBean.product.categoryId}"/>
+        Return to ${actionBean.product.categoryId}
+    </stripes:link>
+</div>
+
+<div id="Catalog">
+    <h2>${actionBean.product.name}</h2>
+    <table>
+        <tr>
+            <th>Item ID</th>
+            <th>Product ID</th>
+            <th>Description</th>
+            <th>List Price</th>
+            <th>&nbsp;</th>
+        </tr>
+        <c:forEach var="item" items="${actionBean.itemList}">
+            <tr>
+                <td><stripes:link 
+                    beanclass="com.langtaojin.myjpetstore.web.actions.CatalogActionBean"
+                    event="viewItem">
+                    <stripes:param name="itemId" value="${item.itemId}"/>
+                    ${item.itemId}
+                    </stripes:link></td>
+                <td>${item.product.productId}</td>
+                <td>${item.attribute1} ${item.attribute2} ${item.attribute3} ${item.attribute4}
+                ${item.attribute5} ${actionBean.product.name}</td>
+                <td><fmt:formatNumber value="${item.listPrice}"
+                    pattern="$#,##0.00"/></td>
+                <td><stripes:link class="Button"
+                    beanclass="com.langtaojin.myjpetstore.web.actions.CartActionBean"
+                    event="addItemToCart">
+                    <stripes:param name="workingItemId" value="${item.itemId}"/>
+                    Add to Cart
+                    </stripes:link>
+                </td>             
+            </tr>
+        </c:forEach>
+    </table>
+</div>
+
+<%@ include file="../common/IncludeBottom.jsp" %>

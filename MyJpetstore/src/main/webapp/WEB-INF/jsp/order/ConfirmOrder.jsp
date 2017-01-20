@@ -1,28 +1,101 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ include file="../common/IncludeTop.jsp" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'MyJsp.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<div id="BackLink">
+    <stripes:link
+        beanclass="com.langtaojin.myjpetstore.web.actions.CatalogActionBean">
+        Return to Main Menu
+    </stripes:link>
+</div>
 
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
-</html>
+<div id="Catalog">
+    Please confirm the information below and then press continue...
+    <table>
+        <tr>
+            <th align="center" colspan="2"><font size="4"><b>Order</b></font>
+            <br/>
+            <font size="3"><b><fmt:formatDate
+                value="${actionBean.order.orderDate}"
+                pattern="yyyy/MM/dd hh:mm:ss"/></b></font>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="2">Billing Address</th>
+        </tr>
+        <tr>
+            <td>First name:</td> 
+            <td><c:out value="${actionBean.order.billToFirstName}"/></td>          
+        </tr>
+        <tr>
+            <td>Last name:</td> 
+            <td><c:out value="${actionBean.order.billToLastName}"/></td>          
+        </tr>
+        <tr>
+            <td>Address 1:</td> 
+            <td><c:out value="${actionBean.order.billAddress1}"/></td>          
+        </tr>
+        <tr>
+            <td>Address 2:</td> 
+            <td><c:out value="${actionBean.order.billAddress2}"/></td>          
+        </tr>
+        <tr>
+            <td>City:</td> 
+            <td><c:out value="${actionBean.order.billCity}"/></td>          
+        </tr>
+        <tr>
+            <td>State:</td> 
+            <td><c:out value="${actionBean.order.billState}"/></td>          
+        </tr>
+        <tr>
+            <td>Zip:</td> 
+            <td><c:out value="${actionBean.order.billZip}"/></td>          
+        </tr>
+        <tr>
+            <td>Country:</td> 
+            <td><c:out value="${actionBean.order.billCountry}"/></td>          
+        </tr>
+        <tr>
+            <th colspan="2">Shipping Address</th>         
+        </tr>
+        <tr>
+            <td>First name:</td>
+            <td><c:out value="${actionBean.order.shipToFirstName}"/></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td><c:out value="${actionBean.order.shipToLastName}"/></td>
+        </tr>
+        <tr>
+            <td>Address 1:</td>
+            <td><c:out value="${actionBean.order.shipAddress1}"/></td>
+        </tr>
+        <tr>
+            <td>Address 2:</td>
+            <td><c:out value="${actionBean.order.shipAddress2}"/></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td><c:out value="${actionBean.order.shipCity}"/></td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td><c:out value="${actionBean.order.shipState}"/></td>
+        </tr>
+        <tr>
+            <td>Zip:</td>
+            <td><c:out value="${actionBean.order.shipZip}"/></td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td><c:out value="${actionBean.order.shipCountry}"/></td>
+        </tr>
+    </table>
+    
+    <stripes:link class="Button"
+        beanclass="com.langtaojin.myjpetstore.web.actions.OrderActionBean"
+        event="newOrder">
+        <stripes:param name="confirmed" value="true"/>
+        Confirm
+    </stripes:link>
+</div>
+
+<%@ include file="../common/IncludeBottom.jsp" %>
